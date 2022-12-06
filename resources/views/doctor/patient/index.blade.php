@@ -1,4 +1,4 @@
-@extends('doctor.layout')
+@extends('layouts.app')
 @section('title')
 Patient
 @endsection
@@ -37,13 +37,17 @@ Patient
             </form>
 
             <div class="nav-item">
-                <a href="" class="nav-link pr-1">
+                <a href="{{ route('patient.create') }}" class="nav-link pr-1">
                     <i class="fas fa-plus-circle fa-lg"></i>
                 </a>
             </div>
 
         </div>
         <div class="card-body pt-0">
+            @if ($message = Session::get('success'))<div class="alert alert-success mt-3">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
             <table class="table table-responsive-md">
                 <thead>
                     <tr>
@@ -52,107 +56,61 @@ Patient
                             <label for="checkbox"></label>
                         </th>
                         <th scope="col">Full Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Birthday</th>
-                        <th scope="col">address</th>
-                        <th scope="col">created day</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Profile</th>
+                        <th scope="col">Username</th>
+                        <th width='280px'>action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="small">
+                    @foreach ($patient as $ptn)
                     <tr>
-                        <th scope="row">
+                        <td>
                             <input type="checkbox">
                             <label for="checkbox"></label>
-                        </th>
-                        <td>Mark</td>
-                        <td>Male</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="text-center dropdown no-arrow">
+                        </td>
+                        <td>{{ $ptn -> name}}</td>
+                        <td class="text-xs">{{ $ptn -> phone}}</td>
+                        <td>{{ $ptn -> address}}</td>
+                        <td>{{ $ptn -> age}}</td>
+                        <td>
+                            @php
+                            $pathImage = '';
+                            $ptn->profile ? ($pathImage = 'storage/' . $ptn->profile) : ($pathImage = 'picture/empty.png');
+                            @endphp
+                            <img src="{{ asset('' . $pathImage . '') }}" width="100" alt="">
+                        </td>
+                        <td>{{ $ptn -> username}}</td>
+                        <td class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
                             </a>
                             <!-- Dropdown Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                            <form action="{{ route('patient.destroy',['patient'=>$ptn->id]) }}" method="POST" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('patient.show',$ptn->id) }}">
                                     <i class="far fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
                                     View
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('patient.edit',$ptn->id) }}">
                                     <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modify
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="dropdown-item">
                                     <i class="far fa-trash-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Delete
-                                </a>
-                            </div>
+                                </button>
+
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">
-                            <input type="checkbox">
-                            <label for="checkbox"></label>
-                        </th>
-                        <td>Jacob</td>
-                        <td>Male</td>
-                        <td>@fat</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="text-center dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </a>
-                            <!-- Dropdown Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="far fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    View
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Modify
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="far fa-trash-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Delete
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <input type="checkbox">
-                            <label for="checkbox"></label>
-                        </th>
-                        <td>Larry the Bird</td>
-                        <td>Male</td>
-                        <td>@twitter</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="text-center dropdown no-arrow">
-                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </a>
-                            <!-- Dropdown Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="far fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    View
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Modify
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="far fa-trash-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Delete
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
+                    <div class="d-flex justify-content-center">
+                        {{ $patient->links()}}
+                    </div>
                 </tbody>
             </table>
         </div>

@@ -12,12 +12,12 @@
     <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -63,7 +63,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="patient">
                     <i class="fas fa-users"></i>
                     <span>Patient</span></a>
             </li>
@@ -75,7 +75,7 @@
             <div class="account">
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/img/user.png" class="user-picture" alt="">
+                        <img src="/assets/img/user.png" class="user-picture" alt="">
                         <span class="description">Hafiyyan Faza</span>
                     </a>
                     <!-- Dropdown - User Information -->
@@ -203,7 +203,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_1.svg" alt="...">
+                                        <img class="rounded-circle" src="/assets/img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -214,7 +214,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_2.svg" alt="...">
+                                        <img class="rounded-circle" src="/assets/img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -225,7 +225,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="assets/img/undraw_profile_3.svg" alt="...">
+                                        <img class="rounded-circle" src="/assets/img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -252,16 +252,16 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="assets/img/Ellipse 1.svg">
+                                <img class="img-profile rounded-circle" src="/assets/img/Ellipse 1.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <img class="rounded-circle mr-1" style="height: 1.5rem; width: 1.5rem;" src="assets/img/Ellipse 1.svg">
+                                    <img class="rounded-circle mr-1" style="height: 1.5rem; width: 1.5rem;" src="/assets/img/Ellipse 1.svg">
                                     English
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <img class="rounded-circle mr-1" style="height: 1.5rem; width: 1.5rem;" src="assets/img/emojione_flag-for-vietnam.svg">
+                                    <img class="rounded-circle mr-1" style="height: 1.5rem; width: 1.5rem;" src="/assets/img/emojione_flag-for-vietnam.svg">
                                     Vietnam
                                 </a>
                             </div>
@@ -337,21 +337,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
+    <script src="/assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="/assets/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="assets/js/demo/chart-area-demo.js"></script>
-    <script src="assets/js/demo/chart-pie-demo.js"></script>
+    <script src="/assets/js/demo/chart-area-demo.js"></script>
+    <script src="/assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
