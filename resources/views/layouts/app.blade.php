@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-light sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex" href="index.html">
+            <a class="sidebar-brand d-flex" href="/">
                 <div class="sidebar-brand-text mx-3">EDoctor</div>
             </a>
 
@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Analytics</span></a>
             </li>
@@ -56,9 +56,9 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="record">
                     <i class="fas fa-th-large"></i>
-                    <span>Invoices</span></a>
+                    <span>Medical Record</span></a>
             </li>
 
             <!-- Nav Item - Tables -->

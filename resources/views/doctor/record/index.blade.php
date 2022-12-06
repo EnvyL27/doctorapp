@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title')
-Patient
+Medical Record
 @endsection
 
 @section('breadcrumb1')
-Patient Management
+Medical Record Management
 @endsection
 
 @section('breadcrumb2')
@@ -12,7 +12,7 @@ Pages
 @endsection
 
 @section('breadcrumb3')
-Patient
+Medical Record
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Patient
     <div class="card">
         <div class="card-header">
             <span class="font-weight-bold">
-                Patient
+                Medical Record
             </span>
             <span class="text-xs mt-1">&nbspOverview</span>
 
@@ -37,7 +37,7 @@ Patient
             </form>
 
             <div class="nav-item">
-                <a href="{{ route('patient.create') }}" class="nav-link pr-1">
+                <a href="{{ route('record.create') }}" class="nav-link pr-1">
                     <i class="fas fa-plus-circle fa-lg"></i>
                 </a>
             </div>
@@ -55,45 +55,41 @@ Patient
                             <input type="checkbox">
                             <label for="checkbox"></label>
                         </th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Age</th>
-                        <!-- <th scope="col">Profile</th> -->
-                        <th scope="col">Username</th>
-                        <th width='280px'>action</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Disease</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Medicine 1</th>
+                        <th scope="col">Medicine 2</th>
+                        <th scope="col">Medicine 3</th>
+                        <th scope="col">Medicine 4</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody class="small">
-                    @foreach ($patient as $ptn)
+                    @foreach ($record as $rcd)
                     <tr>
                         <td>
                             <input type="checkbox">
                             <label for="checkbox"></label>
                         </td>
-                        <td>{{ $ptn -> name}}</td>
-                        <td class="text-xs">{{ $ptn -> phone}}</td>
-                        <td>{{ $ptn -> address}}</td>
-                        <td>{{ $ptn -> age}}</td>
-                        <!-- <td>
-                            @php
-                            $pathImage = '';
-                            $ptn->profile ? ($pathImage = 'storage/' . $ptn->profile) : ($pathImage = 'picture/empty.png');
-                            @endphp
-                            <img src="{{ asset('' . $pathImage . '') }}" width="100" alt="">
-                        </td> -->
-                        <td>{{ $ptn -> username}}</td>
+                        <td>{{ $rcd -> user -> name }}</td>
+                        <td class="text-xs">{{ $rcd -> disease}}</td>
+                        <td>{{ $rcd -> description}}</td>
+                        <td>{{ $rcd -> medicine1}}</td>
+                        <td>{{ $rcd -> medicine2}}</td>
+                        <td>{{ $rcd -> medicine3}}</td>
+                        <td>{{ $rcd -> medicine4}}</td>
                         <td class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
                             </a>
                             <!-- Dropdown Information -->
-                            <form action="{{ route('patient.destroy',['patient'=>$ptn->id]) }}" method="POST" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('patient.show',$ptn->id) }}">
+                            <form action="{{ route('record.destroy',['record'=>$rcd->id]) }}" method="POST" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('record.show',$rcd->id) }}">
                                     <i class="far fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
                                     View
                                 </a>
-                                <a class="dropdown-item" href="{{ route('patient.edit',$ptn->id) }}">
+                                <a class="dropdown-item" href="{{ route('record.edit',$rcd->id) }}">
                                     <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modify
                                 </a>
@@ -111,9 +107,10 @@ Patient
                 </tbody>
             </table>
             <!-- <div class="d-flex justify-content-center">
-                {{ $patient->links()}}
+                {{ $record->links()}}
             </div> -->
         </div>
     </div>
+
 </div>
 @endsection
