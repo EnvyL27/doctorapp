@@ -150,9 +150,7 @@ class PatientController extends Controller
             ->orWhere('address', 'like', "%" . $keyword . "%")
             ->orWhere('age', 'like', "%" . $keyword . "%")
             ->orWhere('username', 'like', "%" . $keyword . "%")
-            ->simplePaginate(3);
+            ->simplePaginate(5);
         return view('doctor.patient.search', ['patient' => $patient]);
-        // return view('doctor.patient.search', compact('patient'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 3);
     }
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('patient', PatientController::class);
-Route::get('/search', [PatientController::class, 'search'])->name('doctor.patient.search');
-Route::resource('record', RecordController::class);
-Route::get('/search', [RecordController::class, 'search'])->name('doctor.record.search');
+Route::get('record/search', [RecordController::class, 'search'])->name('doctor.record.search');
+Route::get('patient/search', [PatientController::class, 'search'])->name('doctor.patient.search');
+Route::resource('/patient', PatientController::class);
+Route::resource('/record', RecordController::class);
