@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title')
-Patient
+Medical Record
 @endsection
 
 @section('breadcrumb1')
-Patient Management
+Medical Record Management
 @endsection
 
 @section('breadcrumb2')
@@ -12,7 +12,7 @@ Pages
 @endsection
 
 @section('breadcrumb3')
-Patient
+Medical Record
 @endsection
 
 @section('content')
@@ -20,14 +20,14 @@ Patient
     <div class="card">
         <div class="card-header">
             <span class="font-weight-bold">
-                Patient
+                Medical Record
             </span>
             <span class="text-xs mt-1">&nbspOverview</span>
 
             <!-- Topbar Search -->
             <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{ url('search') }}">
                 <div class="input-group">
-                    <input type="search" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button">
                             <i class="fas fa-search fa-sm"></i>
@@ -37,7 +37,7 @@ Patient
             </form>
 
             <div class="nav-item">
-                <a href="{{ route('patient.create') }}" class="nav-link pr-1">
+                <a href="{{ route('record.create') }}" class="nav-link pr-1">
                     <i class="fas fa-plus-circle fa-lg"></i>
                 </a>
             </div>
@@ -55,46 +55,40 @@ Patient
                             <input type="checkbox">
                             <label for="checkbox"></label>
                         </th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Age</th>
-                        <!-- <th scope="col">Profile</th> -->
-                        <th scope="col">Username</th>
-                        <th width='280px'>action</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Disease</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Medicine 1</th>
+                        <th scope="col">Medicine 2</th>
+                        <th scope="col">Medicine 3</th>
+                        <th scope="col">Medicine 4</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody class="small">
-                    @foreach ($patient as $ptn)
-                    @if($ptn -> is_admin == 0)
+                    @foreach ($record as $rcd)
                     <tr>
                         <td>
                             <input type="checkbox">
                             <label for="checkbox"></label>
                         </td>
-                        <td>{{ $ptn -> name}}</td>
-                        <td class="text-xs">{{ $ptn -> phone}}</td>
-                        <td>{{ $ptn -> address}}</td>
-                        <td>{{ $ptn -> age}}</td>
-                        <!-- <td>
-                            @php
-                            $pathImage = '';
-                            $ptn->profile ? ($pathImage = 'storage/' . $ptn->profile) : ($pathImage = 'picture/empty.png');
-                            @endphp
-                            <img src="{{ asset('' . $pathImage . '') }}" width="100" alt="">
-                        </td> -->
-                        <td>{{ $ptn -> username}}</td>
+                        <td>{{ $rcd -> user -> name }}</td>
+                        <td class="text-xs">{{ $rcd -> disease}}</td>
+                        <td>{{ $rcd -> medicine_1 -> name}}</td>
+                        <td>{{ $rcd -> medicine_2 -> name ?? ''}}</td>
+                        <td>{{ $rcd -> medicine_3 -> name ?? ''}}</td>
+                        <td>{{ $rcd -> medicine_4 -> name ?? ''}}</td>
                         <td class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
                             </a>
                             <!-- Dropdown Information -->
-                            <form action="{{ route('patient.destroy',['patient'=>$ptn->id]) }}" method="POST" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('patient.show',$ptn->id) }}">
+                            <form action="{{ route('record.destroy',['record'=>$rcd->id]) }}" method="POST" class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('record.show',$rcd->id) }}">
                                     <i class="far fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
                                     View
                                 </a>
-                                <a class="dropdown-item" href="{{ route('patient.edit',$ptn->id) }}">
+                                <a class="dropdown-item" href="{{ route('record.edit',$rcd->id) }}">
                                     <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Modify
                                 </a>
@@ -108,12 +102,12 @@ Patient
                             </form>
                         </td>
                     </tr>
-                    @endif
                     @endforeach
                 </tbody>
             </table>
-            {{ $patient->links()}}
+            {{ $record->links()}}
         </div>
     </div>
+
 </div>
 @endsection

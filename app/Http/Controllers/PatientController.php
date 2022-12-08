@@ -16,7 +16,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patient = User::paginate(3);
+        $patient = User::simplePaginate(5);
         return view('doctor.patient.index', compact('patient'));
     }
 
@@ -139,5 +139,20 @@ class PatientController extends Controller
         $patient->delete();
         return redirect()->route('patient.index')
             ->with('success', 'Patient Successfully Deleted');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+
+        $patient = User::where('name', 'like', "%" . $keyword . "%")
+            ->orWhere('phone', 'like', "%" . $keyword . "%")
+            ->orWhere('address', 'like', "%" . $keyword . "%")
+            ->orWhere('age', 'like', "%" . $keyword . "%")
+            ->orWhere('username', 'like', "%" . $keyword . "%")
+            ->simplePaginate(3);
+        return view('doctor.patient.search', ['patient' => $patient]);
+        // return view('doctor.patient.search', compact('patient'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 3);
     }
 }

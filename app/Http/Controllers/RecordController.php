@@ -17,7 +17,7 @@ class RecordController extends Controller
      */
     public function index()
     {
-        $record = Record::paginate(10);
+        $record = Record::simplePaginate(3);
         return view('doctor.record.index', compact('record'));
     }
 
@@ -127,5 +127,37 @@ class RecordController extends Controller
         $record->delete();
         return redirect()->route('record.index')
             ->with('success', 'Record Successfully Deleted');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+
+        // $record = Record::
+
+        $record = Record::Where('disease', 'like', "%" . $keyword . "%")
+            ->orWhere('description', 'like', "%" . $keyword . "%")
+            ->orwhereHas('user', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->orwhereHas('medicine_1', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->orwhereHas('medicine_2', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->orwhereHas('medicine_3', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->orwhereHas('medicine_4', function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%');
+            })
+            // ->orWhere('age', 'like', "%" . $keyword . "%")
+            // ->orWhere('username', 'like', "%" . $keyword . "%")
+            ->simplePaginate(3);
+
+        return view('doctor.record.search', ['record' => $record]);
+        // return view('doctor.record.search', compact('record'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 3);
     }
 }

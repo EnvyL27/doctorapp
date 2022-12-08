@@ -41,7 +41,9 @@ Medical Record
                     <select name="user_id" class="form-control text-xs">
                         <option value="">--Select--</option>
                         @foreach ($user as $us)
+                        @if ($us->is_admin == 0)
                         <option value="{{ $us->id }}">{{ $us->name }}</option>
+                        @endif
                         @endforeach
                     </select>
                 </div>

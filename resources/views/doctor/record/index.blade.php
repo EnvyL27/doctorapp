@@ -25,9 +25,9 @@ Medical Record
             <span class="text-xs mt-1">&nbspOverview</span>
 
             <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{{ url('search') }}">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button">
                             <i class="fas fa-search fa-sm"></i>
@@ -75,10 +75,10 @@ Medical Record
                         <td>{{ $rcd -> user -> name }}</td>
                         <td class="text-xs">{{ $rcd -> disease}}</td>
                         <td>{{ $rcd -> description}}</td>
-                        <td>{{ $rcd -> medicine1}}</td>
-                        <td>{{ $rcd -> medicine2}}</td>
-                        <td>{{ $rcd -> medicine3}}</td>
-                        <td>{{ $rcd -> medicine4}}</td>
+                        <td>{{ $rcd -> medicine_1 -> name}}</td>
+                        <td>{{ $rcd -> medicine_2 -> name ?? ''}}</td>
+                        <td>{{ $rcd -> medicine_3 -> name ?? ''}}</td>
+                        <td>{{ $rcd -> medicine_4 -> name ?? ''}}</td>
                         <td class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-h"></i>
@@ -106,9 +106,7 @@ Medical Record
                     @endforeach
                 </tbody>
             </table>
-            <!-- <div class="d-flex justify-content-center">
-                {{ $record->links()}}
-            </div> -->
+            {{ $record->links()}}
         </div>
     </div>
 
