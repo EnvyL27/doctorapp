@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\RecordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('record/search', [RecordController::class, 'search'])->name('doctor.record.search');
+Route::get('patient/search', [PatientController::class, 'search'])->name('doctor.patient.search');
+Route::resource('/patient', PatientController::class);
+Route::resource('/record', RecordController::class);

@@ -1,0 +1,368 @@
+.dashboard {
+    background-color: #b85353;
+}
+
+.logo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    color: #2E5D9F;
+    margin-left: 10px;
+}
+
+.sidebar.hide .header .logo {
+    display: none;
+}
+
+.header .material-icons {
+    margin-left: 10px;
+}
+
+.nav-item {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.nav-item a {
+    text-decoration: none;
+}
+
+.ellipse {
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: #ffff;
+    width: 250px;
+    /* width: 70px; */
+    padding: 20px;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    transition: all ease-in .3s;
+}
+
+.sidebar.hide {
+    width: 70px;
+    transition: all ease-out .3s;
+}
+
+.sidebar .main {
+    margin-top: 30px;
+}
+
+.main .option {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: auto;
+    color: gray;
+}
+
+.sidebar.hide .main .option {
+    display: none;
+}
+
+.main .list-item .description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    margin-left: 10px;
+    color: gray;
+}
+
+.main .list-item .icon {
+    color: black;
+}
+
+.main a {
+    text-decoration: none;
+}
+
+.sidebar .main .list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 8px;
+    /* width: 200px; */
+    box-sizing: border-box;
+}
+
+.sidebar .main .list-item:hover {
+    background: #daf4ff;
+    transition: all ease-in .2s;
+}
+
+.sidebar .account {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 8px;
+    /* width: 200px; */
+    box-sizing: border-box;
+}
+
+.sidebar .account:hover {
+    background: #daf4ff;
+    transition: all ease-in .2s;
+}
+
+.account .user-picture {
+    width: 35px;
+    height: 35px;
+}
+
+.account .description {
+    margin-left: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: black;
+}
+
+.sidebar.hide .description {
+    display: none;
+}
+
+.account a {
+    text-decoration: none;
+}
+
+.account .profile .icon {
+    color: black;
+    margin-left: auto;
+}
+
+.sidebar.hide .account .profile .icon {
+    display: none;
+}
+
+/* Toggle Menu */
+#menu-button {
+    width: 32px;
+    position: absolute;
+    overflow: hidden;
+}
+
+#menu-label {
+    position: relative;
+    display: block;
+    height: 20px;
+    cursor: pointer;
+}
+
+#menu-checkbox {
+    display: none;
+}
+
+#radio,
+#menu-label:after,
+#menu-label:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+
+#menu-label:after,
+#menu-label:before {
+    content: "";
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) left;
+}
+
+#menu-label:before {
+    top: 0;
+}
+
+#menu-label:after {
+    top: 8px;
+}
+
+#radio {
+    top: 16px;
+}
+
+#radio:before {
+    content: "MENU";
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 0;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#menu-checkbox:checked+#menu-label::before {
+    left: -39px;
+}
+
+#menu-checkbox:checked+#menu-label::after {
+    left: 39px;
+}
+
+#menu-checkbox:checked+#menu-label #radio::before {
+    animation: moveUpThenDown 0.8s ease 0.2s forwards,
+        shakeUp 0.8s ease 0.2s forwards,
+        shakedown 0.2s ease 0.8s forwards;
+}
+
+@keyframes moveUpThenDown {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -27px;
+    }
+
+    100% {
+        top: -14px;
+    }
+}
+
+@keyframes shakeUp {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    25% {
+        transform: rotateZ(-10deg);
+    }
+
+    50% {
+        transform: rotateZ(0);
+    }
+
+    75% {
+        transform: rotateZ(10deg);
+    }
+
+    100% {
+        transform: rotataZ(0);
+    }
+}
+
+@keyframes shakedown {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    80% {
+        transform: rotateZ(3deg);
+    }
+
+    90% {
+        transform: rotateZ(-3deg);
+    }
+
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+/* navbar */
+.main-content {
+    min-width: 212.5vh;
+    min-height: 100vh;
+    background-color: #2E5D9F;
+    /* position: fixed; */
+}
+
+nav {
+    height: 80px;
+    background-color: #ffff;
+    /* min-width: 212vh; */
+    /* margin-left: 250px; */
+}
+
+.nav-item {
+    float: right;
+    margin-right: 40px;
+    list-style: none;
+}
+
+.nav-item li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 10px;
+}
+
+.nav-item li a {
+    text-decoration: none;
+    font-weight: lighter;
+    color: black;
+}
+
+ul li a:hover {
+    color: #daf4ff;
+}
+
+label #btn,
+label #close {
+    color: #000000;
+    font-size: 30px;
+    float: right;
+    margin-left: 40px;
+    line-height: 80px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    label #btn {
+        display: block;
+    }
+
+    .nav-item {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        margin-right: 0;
+        right: -100%;
+        top: 80px;
+        background-color: #ececec;
+        text-align: center;
+        transition: .5s;
+    }
+
+    .nav-item li {
+        display: block;
+        line-height: 10px;
+        margin: 50px 0;
+    }
+
+    #check:checked~.nav-item {
+        right: 0;
+    }
+
+    #check:checked~label #btn {
+        display: none;
+    }
+
+    #check:checked~label #close {
+        display: block;
+    }
+}
