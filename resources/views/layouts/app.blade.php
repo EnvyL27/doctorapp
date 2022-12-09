@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Analytics</span></a>
             </li>
@@ -66,6 +66,20 @@
                 <a class="nav-link" href="patient">
                     <i class="fas fa-users"></i>
                     <span>Patient</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="medicine">
+                    <i class="fas fa-pills"></i>
+                    <span>Medicine</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="patient">
+                    <i class="fas fa-calendar"></i>
+                    <span>Schedule</span></a>
             </li>
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

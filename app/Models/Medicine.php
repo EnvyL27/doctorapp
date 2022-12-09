@@ -13,7 +13,8 @@ class Medicine extends Model
 
     protected $fillable = [
         'name',
-        'price'
+        'price',
+        'stock'
     ];
 
     public function record()

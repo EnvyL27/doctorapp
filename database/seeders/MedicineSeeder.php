@@ -18,26 +18,32 @@ class MedicineSeeder extends Seeder
             [
                 'name' => 'Paracetamol',
                 'price' => 5000,
+                'stock' => 10,
             ],
             [
                 'name' => 'Ibuprofen',
                 'price' => 6000,
+                'stock' => 10,
             ],
             [
                 'name' => 'Antibiotik',
                 'price' => 6500,
+                'stock' => 10,
             ],
             [
                 'name' => 'Mefenamic acid',
                 'price' => 6000,
+                'stock' => 10,
             ],
             [
                 'name' => 'Dextromethorphan',
                 'price' => 8000,
+                'stock' => 10,
             ],
             [
                 'name' => 'Chlorpheniramine',
                 'price' => 4000,
+                'stock' => 10,
             ],
         ];
 
